@@ -8,7 +8,7 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    client = MongoClient(os.environ.get("MONGODB_URI"))
+    client = MongoClient("mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false")
     app.db = client.microblog
 
     @app.route("/", methods=["GET", "POST"])
